@@ -1,5 +1,5 @@
 <?php
-require "conexao.php"; 
+require "../../php/conexao.php"; 
 // echo 'to aqui';
 
 // header('Content-Type: application/json');

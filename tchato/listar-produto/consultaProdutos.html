@@ -1,112 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela com Barra de Pesquisa</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        input[type=text] {
-            width: 90%;
-            padding: 10px;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        input[type=submit] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Visualizar Estoque</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
-<h2>Tabela de Produtos</h2>
-<form onsubmit="return searchTable()">
-    <input type="text" id="searchInput" placeholder="Pesquisar na tabela...">
-    <input type="submit" value="Pesquisar">
-</form>
-
-<table id="dataTable">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th>Quantidade</th>
-        </tr>
-    </thead>
-    <tbody id="tableBody">
-    </tbody>
-</table>
-
-<script>
-// Dados de exemplo
-var produtos = [
-    { nome: "Produto 1", descricao: "Descrição do Produto 1", preco: "R$ 10,00", quantidade: 20 },
-    { nome: "Produto 2", descricao: "Descrição do Produto 2", preco: "R$ 15,00", quantidade: 15 }
-    // Adicione mais produtos conforme necessário
-];
-
-// Função para preencher a tabela com os dados dos produtos
-function populateTable() {
-    var tableBody = document.getElementById("tableBody");
-    tableBody.innerHTML = "";
-    produtos.forEach(function(produto) {
-        var row = "<tr>";
-        row += "<td>" + produto.nome + "</td>";
-        row += "<td>" + produto.descricao + "</td>";
-        row += "<td>" + produto.preco + "</td>";
-        row += "<td>" + produto.quantidade + "</td>";
-        row += "</tr>";
-        tableBody.innerHTML += row;
-    });
-}
-
-// Chamando a função para preencher a tabela ao carregar a página
-populateTable();
-
-// Função para filtrar a tabela com base no texto digitado na barra de pesquisa
-function searchTable() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("dataTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td");
-        for (var j = 0; j < td.length; j++) {
-            if (td[j]) {
-                txtValue = td[j].textContent || td[j].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                    break;
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    return false; // Evita que o formulário seja enviado
-}
-</script>
-
+    <div class="container-l">
+        <h1>Estoque de Produtos</h1>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Pesquisar...">
+            <button id="search-button">Pesquisar</button>
+        </div>
+        <table id="tabela-estoque">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Fornecedor</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os dados serão inseridos dinamicamente aqui -->
+            </tbody>
+        </table>
+    </div>
+    <script src="./JS/listar.js"></script>
 </body>
 </html>
