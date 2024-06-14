@@ -31,7 +31,7 @@ $(document).ready(function () {
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'localhost/tchato';
+                window.location.href = '../../tchato';
             }
         });
        
