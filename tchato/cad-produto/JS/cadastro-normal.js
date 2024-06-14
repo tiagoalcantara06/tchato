@@ -19,7 +19,7 @@ $(document).ready(function () {
             }
         });
     });
-});
+
 
 function t() {
     Swal.fire({
@@ -45,3 +45,5 @@ function e() {
         }
         });
 }
+
+});
